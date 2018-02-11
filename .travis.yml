@@ -1,0 +1,20 @@
+language: python
+python:
+  - '3.6.3'
+sudo: false
+
+addons:
+  postgresql: '9.4'
+
+branches:
+  only:
+    - master
+
+install:
+  - make ci-deps
+
+env:
+  - DB=postgresql
+
+script:
+  - make ci-test
