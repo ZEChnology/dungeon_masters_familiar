@@ -1,0 +1,20 @@
+language: python
+python:
+  - '3.6.3'
+sudo: false
+
+branches:
+  only:
+    - master
+
+install:
+  - make dev-deps
+
+env:
+  - DB=postgresql
+
+before_script:
+  - make new-db
+
+script:
+  - make test
