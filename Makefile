@@ -13,7 +13,7 @@ test:
 	$(ENV)/bin/flake8
 
 env:
-	$(shell which python) -m venv env
+	$(shell which python) -m venv $(ENV)
 
 clean:
 	rm -rf env
