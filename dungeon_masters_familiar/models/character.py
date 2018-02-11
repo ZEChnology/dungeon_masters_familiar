@@ -27,7 +27,7 @@ class Character(models.Model):
     name = models.CharField(max_length=50)
     alignment = models.CharField(max_length=30)
     traits = fields.ArrayField(models.CharField(max_length=30))
-    background = models.CharField(max_length=30)
+    background = models.TextField()
 
     # Health
     hit_die = models.CharField(max_length=30)
@@ -40,9 +40,9 @@ class Character(models.Model):
 
     # Magic
     cantrips = fields.ArrayField(models.CharField(max_length=30))
-    spells_known = fields.ArrayField(models.CharField(max_length=30))
+    spells_known = fields.JSONField()
     spells_prepared = fields.ArrayField(models.CharField(max_length=30))
     spell_slots = fields.JSONField()
-    specllcasting_ability = models.CharField(max_length=30)
+    spellcasting_ability = models.CharField(max_length=30)
     spell_attack_bonus = models.IntegerField()
-    spell_dc = models.IntegerField()
+    spell_save_dc = models.IntegerField()
