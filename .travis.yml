@@ -7,17 +7,11 @@ branches:
   only:
     - master
 
-before_install:
-  - make env
-
 install:
-  - make dev-deps
+  - make ci-deps
 
 env:
   - DB=postgresql
 
-before_script:
-  - make new-db
-
 script:
-  - make test
+  - make ci-test

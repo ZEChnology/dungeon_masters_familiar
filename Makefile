@@ -30,5 +30,19 @@ new-db: deps
 	$(MANAGE) makemigrations
 	$(MANAGE) migrate
 
+ci-db:
+	createdb dmf
+	python manage.py makemigrations
+	python manage.py migrate
 
-.PHONY: env clean deps dev-deps new-db start test
+ci-deps:
+	pip install -r requirements/base.txt
+	pip install -r requirements/dev.txt
+
+ci-test: ci-db
+	coverage run manage.py test
+	coverage report
+	flake8
+
+
+.PHONY: env clean deps dev-deps new-db start test ci-deps ci-test
